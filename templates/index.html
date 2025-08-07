@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Interest Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Movie Genre Predictor</h2>
+        <form method="POST" action="/predict">
+            <label>Age</label>
+            <input type="number" name="age" placeholder="Enter Age" required>
+
+            <label>Gender</label>
+            <select name="gender" required>
+                <option value="">-- Select Gender --</option>
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
